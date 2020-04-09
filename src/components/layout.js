@@ -41,11 +41,8 @@ const Layout = props => {
             </ul>
           </nav>
           <div className="site-head-center">
-            <Link className="site-head-logo" to={`/`}>
-              {title}
-            </Link>
           </div>
-          <div className="site-head-right">
+          {/* <div className="site-head-right">
             <div className="social-links">
               <a
                 href="https://www.facebook.com"
@@ -80,7 +77,7 @@ const Layout = props => {
                 GitHub
               </a>
             </div>
-          </div>
+            </div> */}
         </div>
       </header>
       <main id="site-main" className="site-main">
