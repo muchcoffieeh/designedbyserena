@@ -1,5 +1,7 @@
 import React from "react"
 import { graphql, StaticQuery } from "gatsby"
+import _ from "lodash";
+import { Link } from "gatsby";
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -13,13 +15,14 @@ import "../utils/css/screen.css"
 const BlogIndex = ({ data }, location) => {
   const siteTitle = data.site.siteMetadata.title
   const posts = data.allMarkdownRemark.edges
+  const tags = data.allMarkdownRemark.distinct
   let postCounter = 0
 
   return (
     <Layout title={siteTitle}>
       <SEO
         title="Posts"
-        keywords={[`devlog`, `blog`, `gatsby`, `javascript`, `react`]}
+        keywords={[`designer`, `UX`, `user experience`, `software design`]}
       />
       {/* <Bio /> */}
       {data.site.siteMetadata.description && (
@@ -32,6 +35,19 @@ const BlogIndex = ({ data }, location) => {
             }}>Passion for emerging tech.</h3>
         </header>
       )}
+      <div className="tag-container">
+        {tags.map( tag => {
+          return(
+              <Link
+              key={tag}
+              style={{ textDecoration: "none" }}
+              to={`/tags/${_.kebabCase(tag)}`}
+              >
+              <div className="tag-item">#{tag}</div>
+              </Link>
+            )
+          })}
+        </div>
       <div className="post-feed">
         {posts.map(({ node }) => {
           postCounter++
@@ -57,7 +73,10 @@ const indexQuery = graphql`
         description
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(sort: { 
+      fields: [frontmatter___date], 
+      order: DESC }) {
+        distinct(field: frontmatter___tags)
       edges {
         node {
           excerpt
@@ -87,7 +106,9 @@ export default props => (
   <StaticQuery
     query={indexQuery}
     render={data => (
-      <BlogIndex location={props.location} props data={data} {...props} />
+      <div>
+        <BlogIndex location={props.location} props data={data} {...props} />
+      </div>
     )}
   />
 )
