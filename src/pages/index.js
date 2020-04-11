@@ -36,16 +36,28 @@ const BlogIndex = ({ data }, location) => {
         </header>
       )}
       <div className="tag-container">
-        {tags.map( tag => {
-          return(
+        {tags.map( (tag, index) => {
+          if (index == 3){
+            return(
               <Link
               key={tag}
               style={{ textDecoration: "none" }}
               to={`/tags/${_.kebabCase(tag)}`}
               >
-              <div className="tag-item">#{tag}</div>
+              <div className="tag-item-last">{tag}</div>
               </Link>
             )
+          }
+          else{
+            return(
+                <Link
+                key={tag}
+                style={{ textDecoration: "none" }}
+                to={`/tags/${_.kebabCase(tag)}`}
+                >
+                <div className="tag-item">{tag}</div>
+                </Link>
+            )}
           })}
         </div>
       <div className="post-feed">

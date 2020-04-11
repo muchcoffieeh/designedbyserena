@@ -30,7 +30,7 @@ const TagIndex = ({ data }) => {
               style={{ textDecoration: "none" }}
               to={`/tags/${_.kebabCase(tag)}`}
               >
-              <div className="tag-item">#{tag}</div>
+              <div className="tag-item">{tag}</div>
               </Link>
             )
           })}

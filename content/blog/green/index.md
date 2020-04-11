@@ -1,7 +1,7 @@
 ---
 title: Green
 date: "2019-05-03"
-tags: [green,color]
+tags: [All,Marketing]
 thumbnail: ./dose-juice-1184429-unsplash.jpg
 description: For in the true nature of things, if we rightly consider, every green tree is far more glorious than if it were made of gold and silver.
 ---
