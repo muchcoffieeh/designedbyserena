@@ -1,5 +1,5 @@
 ---
-title: AAF Web Platform
+title: Alliance of American Football Web Platform
 date: "2019-05-08"
 tags: [All, Applications]
 thumbnail: ./game-time_web.jpg

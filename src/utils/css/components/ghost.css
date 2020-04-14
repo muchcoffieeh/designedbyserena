@@ -29,7 +29,16 @@
 
 .kg-width-wide {
     position: relative;
-    width: 75vw;
+    width: 60vw;
+    min-width: 100%;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    transform: translateX(calc(50vw - 50%));
+}
+
+.kg-width-med {
+    position: relative;
+    width: 40vw;
     min-width: 100%;
     margin-left: calc(50% - 50vw);
     margin-right: calc(50% - 50vw);
