@@ -10,6 +10,12 @@ FreeWire Technologies builds cloud-connected battery systems for on-site power a
 
 ### Sample Screens
 
+<div class="kg-card kg-image-card kg-width-wide">
+
+![Hotspots Doc](./serenaXu_fw_salesApp_samples.jpg)
+
+</div>
+
 ### Process Documents
 
 The first part of the process was to fully understand a typical customer's journey to purchase such a high-ticket item such as ours. After numerous customer interviews and scouring our CRM and notes from in-person meetings, I visualized the customer journey map for our team to dissect.
@@ -36,7 +42,7 @@ After the official kickoff of product development, I created an introductory spe
 
 </div>
 
-I created a simple document to guide the user flow and the visual styling.
+I created a simple document to explain the user flow and the visual styling.
 
 <div class="kg-card kg-image-card kg-width-wide">
 
