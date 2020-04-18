@@ -1,6 +1,6 @@
 import React from "react"
-import { graphql } from "gatsby"
-
+import { graphql, Link } from "gatsby"
+import _ from "lodash";
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import PostCard from "../components/postCard"
@@ -10,18 +10,52 @@ class TagPageTemplate extends React.Component {
     const props = this.props
     const tag = this.props.pageContext.tag
     const posts = this.props.data.allMarkdownRemark.edges
+    const data = this.props.data
+    const tags = this.props.data.allMarkdownRemark.distinct
     const siteTitle = this.props.data.site.siteMetadata.title
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO
           // title={`#${tag}`}
-          title={`#${tag.charAt(0).toUpperCase() + tag.slice(1)}`}
+          title={`Designed By Serena - ${tag.charAt(0).toUpperCase() + tag.slice(1)}`}
           keywords={[`${tag}`, `blog`, `gatsby`, `javascript`, `react`]}
         />
-        <header className="tag-page-head">
-          <h1 className="page-head-title">#{tag}({props.data.allMarkdownRemark.totalCount})</h1>
+        {data.site.siteMetadata.description && (
+        <header className="page-head">
+          <h1 className="page-head-title">
+            {data.site.siteMetadata.description}
+          </h1>
+          <h3 style={{
+            margin: '.3em 0 1em 0'
+            }}>Passion for emerging tech.</h3>
         </header>
+      )}
+        <div className="tag-container">
+        {tags.map( (tag, index) => {
+          if (index == 3){
+            return(
+              <Link
+              key={tag}
+              style={{ textDecoration: "none" }}
+              to={`/tags/${_.kebabCase(tag)}`}
+              >
+              <div className="tag-item-last">{tag}</div>
+              </Link>
+            )
+          }
+          else{
+            return(
+                <Link
+                key={tag}
+                style={{ textDecoration: "none" }}
+                to={`/tags/${_.kebabCase(tag)}`}
+                >
+                <div className="tag-item">{tag}</div>
+                </Link>
+            )}
+          })}
+        </div>
       <div className="post-feed">
         {posts.map(({ node }) => {
           return (
@@ -45,10 +79,11 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
-        author
+        description
       }
     }
     allMarkdownRemark(filter: { frontmatter: { tags: { in: [$tag] } } }, sort: { fields: [frontmatter___date], order: DESC }) {
+      distinct(field: frontmatter___tags)
       totalCount
       edges {
         node {

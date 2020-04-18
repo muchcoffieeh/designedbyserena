@@ -21,7 +21,7 @@ const BlogIndex = ({ data }, location) => {
   return (
     <Layout title={siteTitle}>
       <SEO
-        title="Posts"
+        title="Designed By Serena"
         keywords={[`designer`, `UX`, `user experience`, `software design`]}
       />
       {/* <Bio /> */}
@@ -37,7 +37,7 @@ const BlogIndex = ({ data }, location) => {
       )}
       <div className="tag-container">
         {tags.map( (tag, index) => {
-          if (index == 3){
+          if (index == 2){
             return(
               <Link
               key={tag}
