@@ -9,6 +9,10 @@ class TagPageTemplate extends React.Component {
   render() {
     const props = this.props
     const tag = this.props.pageContext.tag
+    const tagStr = tag.toString()
+    const tagCheck = this.props.pageContext.tag == "Applications"
+    console.log(tag)
+    console.log(this.props.pageContext.type)
     const posts = this.props.data.allMarkdownRemark.edges
     const data = this.props.data
     const tags = this.props.data.allMarkdownRemark.distinct
@@ -31,9 +35,53 @@ class TagPageTemplate extends React.Component {
             }}>Passion for emerging tech.</h3>
         </header>
       )}
+
+        {tagCheck
+        ? 
         <div className="tag-container">
-        {tags.map( (tag, index) => {
-          if (index == 3){
+          <Link
+          style={{ textDecoration: "none" }}
+          to={`/`}
+          >
+          <div className="tag-item">All</div>
+          </Link>
+          <Link
+              style={{ textDecoration: "none", fontWeight: "700"  }}
+              to={`/tags/applications`}
+              >
+              <div className="tag-item">Applications</div>
+          </Link>
+          <Link
+              style={{ textDecoration: "none"}}
+              to={`/tags/websites`}
+              >
+              <div className="tag-item-last">Websites</div>
+          </Link>
+        </div>
+    :
+    <div className="tag-container">
+    <Link
+            style={{ textDecoration: "none" }}
+            to={`/`}
+            >
+            <div className="tag-item">All</div>
+        </Link>
+        <Link
+            style={{ textDecoration: "none"}}
+            to={`/tags/applications`}
+            >
+            <div className="tag-item">Applications</div>
+        </Link>
+        <Link
+            style={{ textDecoration: "none", fontWeight: "700"  }}
+            to={`/tags/websites`}
+            >
+            <div className="tag-item-last">Websites</div>
+        </Link>
+        </div>}
+        
+        {/* {tags.map( (tag, index) => {
+          if (index === 2){
             return(
               <Link
               key={tag}
@@ -54,8 +102,7 @@ class TagPageTemplate extends React.Component {
                 <div className="tag-item">{tag}</div>
                 </Link>
             )}
-          })}
-        </div>
+          })} */}
       <div className="post-feed">
         {posts.map(({ node }) => {
           return (

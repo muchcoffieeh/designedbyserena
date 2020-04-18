@@ -36,8 +36,26 @@ const BlogIndex = ({ data }, location) => {
         </header>
       )}
       <div className="tag-container">
-        {tags.map( (tag, index) => {
-          if (index == 2){
+        <Link
+            style={{ textDecoration: "none", fontWeight: "700" }}
+            to={`/`}
+            >
+            <div className="tag-item">All</div>
+        </Link>
+        <Link
+            style={{ textDecoration: "none" }}
+            to={`/tags/applications`}
+            >
+            <div className="tag-item">Applications</div>
+        </Link>
+        <Link
+            style={{ textDecoration: "none" }}
+            to={`/tags/websites`}
+            >
+            <div className="tag-item-last">Websites</div>
+        </Link>
+        {/* {tags.map( (tag, index) => {
+          if (index === 2){
             return(
               <Link
               key={tag}
@@ -58,7 +76,7 @@ const BlogIndex = ({ data }, location) => {
                 <div className="tag-item">{tag}</div>
                 </Link>
             )}
-          })}
+          })} */}
         </div>
       <div className="post-feed">
         {posts.map(({ node }) => {
