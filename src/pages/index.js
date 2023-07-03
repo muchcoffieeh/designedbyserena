@@ -1,7 +1,8 @@
 import React from "react"
 import { graphql, StaticQuery } from "gatsby"
-import _ from "lodash";
-import { Link } from "gatsby";
+import _ from "lodash"
+import { Link } from "gatsby"
+//import Img from "../static/sx-logo.png"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -27,14 +28,15 @@ const BlogIndex = ({ data }, location) => {
       {/* <Bio /> */}
       {data.site.siteMetadata.description && (
         <header className="page-head">
-          <h1 className="page-head-title">
+          <img className="mainLogo" src={`sx-logo.png`} />
+          <h1 className="page-head-title">Designed By Serena</h1>
+
+          <h4 style={{ margin: "0.1em 0", fontSize: "1.4em" }}>
             {data.site.siteMetadata.description}
-          </h1>
-          <h3 style={{
-            margin: '.3em 0 1em 0'
-            }}>Passion for emerging tech.</h3>
+          </h4>
         </header>
       )}
+      {/*}
       <div className="tag-container">
         <Link
             style={{ textDecoration: "none", fontWeight: "700" }}
@@ -53,7 +55,7 @@ const BlogIndex = ({ data }, location) => {
             to={`/tags/websites`}
             >
             <div className="tag-item-last">Websites</div>
-        </Link>
+      </Link>
         {/* {tags.map( (tag, index) => {
           if (index === 2){
             return(
@@ -76,8 +78,8 @@ const BlogIndex = ({ data }, location) => {
                 <div className="tag-item">{tag}</div>
                 </Link>
             )}
-          })} */}
-        </div>
+          })} 
+        </div>*/}
       <div className="post-feed">
         {posts.map(({ node }) => {
           postCounter++
@@ -103,10 +105,8 @@ const indexQuery = graphql`
         description
       }
     }
-    allMarkdownRemark(sort: { 
-      fields: [frontmatter___date], 
-      order: DESC }) {
-        distinct(field: frontmatter___tags)
+    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+      distinct(field: frontmatter___tags)
       edges {
         node {
           excerpt

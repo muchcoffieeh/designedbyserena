@@ -1,9 +1,10 @@
 module.exports = {
-  name: '',
-  shortName: 'LAM',
-  description: 'Marketing. Design.',
-  url: 'https://gatsby-lam.vaporwavy.io', // Domain of your site without prefix!
-  prefix: '/',
-  author: 'Vaporwavy',
-  twitter: ''
+  name: "designed",
+  shortName: "LAM",
+  mainName: "Designed By Serena",
+  description: "Product Designer. Product Thinker. Passion for emerging tech.",
+  url: "https://www.designedbyserena.xyz",
+  prefix: "/",
+  author: "Vaporwavy",
+  twitter: "",
 }

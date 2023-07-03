@@ -30,18 +30,15 @@ const Layout = props => {
                 <Link to={`/`}>Home</Link>
               </li> */}
               <li className="nav-about" role="menuitem">
-                <Link to={`/about`}>About</Link>
+                <Link to={`/`}>Home</Link>
               </li>
+              {/*}
               <li className="nav-elements" role="menuitem">
-                <Link to={`/elements`}>Elements</Link>
-              </li>
-              <li className="nav-tags" role="menuitem">
-                <Link to={`/tags`}>Tags</Link>
-              </li>
+                <Link to={`https://www.linkedin.com/in/serena-s-xu/`}>About</Link>
+            </li>*/}
             </ul>
           </nav>
-          <div className="site-head-center">
-          </div>
+          <div className="site-head-center"></div>
           {/* <div className="site-head-right">
             <div className="social-links">
               <a
@@ -87,14 +84,7 @@ const Layout = props => {
       </main>
       <footer className="site-foot">
         &copy; {new Date().getFullYear()} <Link to={`/`}>{title}</Link> &mdash;
-        Built with{" "}
-        <a
-          href="https://gatsbyjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Gatsby
-        </a>
+        Designed By Serena{" "}
       </footer>
     </div>
   )

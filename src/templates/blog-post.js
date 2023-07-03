@@ -1,6 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
-import Img from "gatsby-image"
+//import Img from "gatsby-image"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -19,24 +19,28 @@ class BlogPostTemplate extends React.Component {
         <article
           className={`post-content ${post.frontmatter.thumbnail || `no-image`}`}
         >
-        <div             
-          data-sal="slide-right"
+          <div
+            data-sal="slide-right"
             data-sal-delay="100"
             data-sal-duration="300000ms"
-            data-sal-easing="ease-out-cubic">
-          <header className="post-content-header">
-            <h2 className="post-content-title">{post.frontmatter.title}</h2>
-          </header>
+            data-sal-easing="ease-out-cubic"
+          >
+            <header className="post-content-header">
+              <h2 className="post-content-title">{post.frontmatter.title}</h2>
+            </header>
           </div>
 
-          <div             
+          <div
             data-sal="slide-left"
             data-sal-delay="100"
             data-sal-duration="300000ms"
-            data-sal-easing="ease-out-cubic">
-          {post.frontmatter.description && (
-            <h4 class="post-content-excerpt">{post.frontmatter.description}</h4>
-          )}
+            data-sal-easing="ease-out-cubic"
+          >
+            {post.frontmatter.description && (
+              <h4 class="post-content-excerpt">
+                {post.frontmatter.description}
+              </h4>
+            )}
           </div>
 
           {/* {post.frontmatter.thumbnail && (
@@ -49,7 +53,7 @@ class BlogPostTemplate extends React.Component {
             </div>
           )} */}
 
-          <div 
+          <div
             className="post-content-body"
             dangerouslySetInnerHTML={{ __html: post.html }}
           />

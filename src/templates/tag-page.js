@@ -1,6 +1,6 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
-import _ from "lodash";
+import _ from "lodash"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import PostCard from "../components/postCard"
@@ -22,64 +22,53 @@ class TagPageTemplate extends React.Component {
       <Layout location={this.props.location} title={siteTitle}>
         <SEO
           // title={`#${tag}`}
-          title={`Designed By Serena - ${tag.charAt(0).toUpperCase() + tag.slice(1)}`}
+          title={`Designed By Serena - ${tag.charAt(0).toUpperCase() +
+            tag.slice(1)}`}
           keywords={[`${tag}`, `blog`, `gatsby`, `javascript`, `react`]}
         />
         {data.site.siteMetadata.description && (
-        <header className="page-head">
-          <h1 className="page-head-title">
-            {data.site.siteMetadata.description}
-          </h1>
-          <h3 style={{
-            margin: '.3em 0 1em 0'
-            }}>Passion for emerging tech.</h3>
-        </header>
-      )}
+          <header className="page-head">
+            <img className="mainLogo" src={`sx-logo.png`} />
+            <h1 className="page-head-title">Designed By Serena</h1>
 
-        {tagCheck
-        ? 
-        <div className="tag-container">
-          <Link
-          style={{ textDecoration: "none" }}
-          to={`/`}
-          >
-          <div className="tag-item">All</div>
-          </Link>
-          <Link
-              style={{ textDecoration: "none", fontWeight: "700"  }}
+            <h4 style={{ margin: "0.1em 0", fontSize: "1.4em" }}>
+              {data.site.siteMetadata.description}
+            </h4>
+          </header>
+        )}
+
+        {tagCheck ? (
+          <div className="tag-container">
+            <Link style={{ textDecoration: "none" }} to={`/`}>
+              <div className="tag-item">All</div>
+            </Link>
+            <Link
+              style={{ textDecoration: "none", fontWeight: "700" }}
               to={`/tags/applications`}
-              >
+            >
               <div className="tag-item">Applications</div>
-          </Link>
-          <Link
-              style={{ textDecoration: "none"}}
-              to={`/tags/websites`}
-              >
+            </Link>
+            <Link style={{ textDecoration: "none" }} to={`/tags/websites`}>
               <div className="tag-item-last">Websites</div>
-          </Link>
-        </div>
-    :
-    <div className="tag-container">
-    <Link
-            style={{ textDecoration: "none" }}
-            to={`/`}
+            </Link>
+          </div>
+        ) : (
+          <div className="tag-container">
+            <Link style={{ textDecoration: "none" }} to={`/`}>
+              <div className="tag-item">All</div>
+            </Link>
+            <Link style={{ textDecoration: "none" }} to={`/tags/applications`}>
+              <div className="tag-item">Applications</div>
+            </Link>
+            <Link
+              style={{ textDecoration: "none", fontWeight: "700" }}
+              to={`/tags/websites`}
             >
-            <div className="tag-item">All</div>
-        </Link>
-        <Link
-            style={{ textDecoration: "none"}}
-            to={`/tags/applications`}
-            >
-            <div className="tag-item">Applications</div>
-        </Link>
-        <Link
-            style={{ textDecoration: "none", fontWeight: "700"  }}
-            to={`/tags/websites`}
-            >
-            <div className="tag-item-last">Websites</div>
-        </Link>
-        </div>}
-        
+              <div className="tag-item-last">Websites</div>
+            </Link>
+          </div>
+        )}
+
         {/* {tags.map( (tag, index) => {
           if (index === 2){
             return(
@@ -103,18 +92,14 @@ class TagPageTemplate extends React.Component {
                 </Link>
             )}
           })} */}
-      <div className="post-feed">
-        {posts.map(({ node }) => {
-          return (
-            <PostCard
-              key={node.fields.slug}
-              node={node}
-              postClass={`post`}
-            />
-          )
-        })}
-      </div>
-    </Layout>
+        <div className="post-feed">
+          {posts.map(({ node }) => {
+            return (
+              <PostCard key={node.fields.slug} node={node} postClass={`post`} />
+            )
+          })}
+        </div>
+      </Layout>
     )
   }
 }
@@ -129,7 +114,10 @@ export const pageQuery = graphql`
         description
       }
     }
-    allMarkdownRemark(filter: { frontmatter: { tags: { in: [$tag] } } }, sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(
+      filter: { frontmatter: { tags: { in: [$tag] } } }
+      sort: { fields: [frontmatter___date], order: DESC }
+    ) {
       distinct(field: frontmatter___tags)
       totalCount
       edges {
